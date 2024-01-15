@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reproducir Audio</title>
+</head>
+
+<body>
+    <div class="d-none">
+        <button id="miBoton" class="buttonI">Reproducir Audio</button>
+        <audio id="miAudio" controls loop>
+            <source src="assets/sys/a.mp3" type="audio/mp3">
+            Tu navegador no soporta el elemento de audio.
+        </audio>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("miBoton").addEventListener("click", function() {
+                setTimeout(reproducirAudio, 100);
+            });
+
+            document.addEventListener("scroll", function() {
+                reproducirAudio();
+            });
+        });
+
+        function reproducirAudio() {
+            var audio = document.getElementById("miAudio");
+            audio.play()
+                .then(() => {
+                    console.log("ok");
+                })
+                .catch((error) => {
+                    console.error("Error audio", error);
+                });
+        }
+    </script>
+
+</body>
+
+</html>
